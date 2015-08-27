@@ -1,7 +1,7 @@
 (function( window, document, $1984, undefined ){
 
 	var _NAME = "1984.js";
-	var _WS = _TRACKING = { };
+	var _WS = { }, _TRACKING = _WS;
 
 	var _DEBUG = function() { };
 	var _DBGON = function(msg) {
@@ -9,9 +9,8 @@
 	}
 
 	var _PROPAGATE = function(e) {
-		_DEBUG("Propagating event " + e);
+		_DEBUG("Propagating event " + e + " from " + e.fromElement);
 		try {
-			console.log(e);
 			_WS.send(JSON.stringify({
 				"type" : e.type,
 				"timestamp" : e.timeStamp,
