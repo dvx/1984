@@ -1,25 +1,32 @@
-(function( window, document, ORWELL, undefined ){
+(function( window, document, $1984, undefined ){
 
-	var _IDENT = "1984.js";
+	var _NAME = "1984.js";
 	var _WS = { };
 
+	var _TRACKING = { };
+
 	var _DEBUG = function() { };
-	var _DBG01 = function(msg) {
-		console.log(_IDENT + ": "  + msg);
+	var _DBGON = function(msg) {
+		console.log(_NAME + ": "  + msg);
 	}
 
 	var _PROPAGATE = function(e) {
 		_DEBUG("Propagating event " + e);
 		try {
-			_WS.send(e);
+			console.log(e);
+			_WS.send(JSON.stringify({
+				"type" : e.type,
+				"timestamp" : e.timeStamp,
+			}));
 		} catch (exception) {
 			_DEBUG(exception);
 		}
 	};
 
-	ORWELL.init = function(server, options) {
-		options = options || {};
-		_DEBUG = options.debug ? _DBG01 : _DEBUG;
+	$1984.init = function(server, options) {
+		var options = options || { };
+		_TRACKING = options.tracking || _TRACKING;
+		_DEBUG = options.debug ? _DBGON : _DEBUG;
 		_WS = new WebSocket(server);
 
 		document.addEventListener('DOMContentLoaded', function () {
@@ -38,4 +45,4 @@
 		});
 	};
 
-}( window, window.document, (window.ORWELL = window.ORWELL || {}) ));
+}( window, window.document, (window.$1984 = window.$1984 || {}) ));
