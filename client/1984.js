@@ -1,9 +1,7 @@
 (function( window, document, $1984, undefined ){
 
 	var _NAME = "1984.js";
-	var _WS = { };
-
-	var _TRACKING = { };
+	var _WS = _TRACKING = { };
 
 	var _DEBUG = function() { };
 	var _DBGON = function(msg) {
@@ -30,7 +28,7 @@
 		_DEBUG = options.debug ? _DBGON : _DEBUG;
 		_WS = new WebSocket(server);
 
-		document.addEventListener('DOMContentLoaded', function () {
+		document.addEventListener("DOMContentLoaded", function () {
 			_WS.onopen = function() {
 				var watchable = document.querySelectorAll("[o-watch]");
 				var wl = watchable.length;
@@ -46,4 +44,4 @@
 		});
 	};
 
-}( window, window.document, (window.$1984 = window.$1984 || {}) ));
+}( window, window.document, (window.$1984 = window.$1984 || { }) ));
