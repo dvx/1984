@@ -17,6 +17,7 @@
 			_WS.send(JSON.stringify({
 				"type" : e.type,
 				"timestamp" : e.timeStamp,
+				"tracking" : _TRACKING
 			}));
 		} catch (exception) {
 			_DEBUG(exception);
@@ -37,7 +38,7 @@
 					var events = watchable[i].getAttribute("o-watch").split(" ");
 					for (var j = 0; j < events.length; ++j) {
 						watchable[i].addEventListener(events[j], _PROPAGATE, true);
-							_DEBUG("Spying on " + watchable[i] + "[" + events[j] + "]");
+						_DEBUG("Spying on " + watchable[i] + "[" + events[j] + "]");
 					}
 				}
 				window.addEventListener("scroll", _PROPAGATE, true);
